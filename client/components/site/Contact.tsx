@@ -35,7 +35,9 @@ export function Contact() {
           </div>
           <button type="submit" className="inline-flex items-center rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:opacity-90">Send Message</button>
         </motion.form>
-        <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="rounded-xl border bg-card p-6">
+        <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="rounded-xl border bg-card p-6 relative overflow-hidden">
+          <img src="https://cdn.builder.io/api/v1/image/assets%2F13e4ac3fb51f402398bc916f1280a140%2F84171c8fdc5c4f45882d7de85397be0b?format=webp&width=800" alt="decor" className="pointer-events-none absolute right-0 bottom-0 w-48 opacity-10 blur-md mix-blend-overlay" />
+
           <ul className="space-y-4">
             <li className="flex items-center gap-3 text-sm text-muted-foreground">
               <Mail className="size-4" />
@@ -55,9 +57,9 @@ export function Contact() {
             </li>
           </ul>
 
-          <div className="mt-6 flex items-center gap-3">
-            <a href="https://cdn.builder.io/o/assets%2F13e4ac3fb51f402398bc916f1280a140%2F0f296d2b72064c288679c29887927aa7?alt=media&token=eaf36571-61f2-4cad-975a-58e1db1a4d3c&apiKey=13e4ac3fb51f402398bc916f1280a140" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground">Download Resume</a>
-            <a href="https://www.linkedin.com/in/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-md border px-4 py-2 text-sm">View LinkedIn</a>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <a href="https://cdn.builder.io/o/assets%2F13e4ac3fb51f402398bc916f1280a140%2F0f296d2b72064c288679c29887927aa7?alt=media&token=eaf36571-61f2-4cad-975a-58e1db1a4d3c&apiKey=13e4ac3fb51f402398bc916f1280a140" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-md bg-gradient-to-r from-primary to-fuchsia-500 px-4 py-2 text-sm font-semibold text-primary-foreground shadow">Download Resume</a>
+            <a href="https://www.linkedin.com/in/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-md border px-4 py-2 text-sm bg-transparent">View LinkedIn</a>
           </div>
         </motion.div>
       </div>
