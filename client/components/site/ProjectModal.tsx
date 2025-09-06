@@ -16,13 +16,23 @@ export function ProjectModal({ project, onClose }: { project: Project | null; on
     };
     document.addEventListener("keydown", onKey);
 
-    // Prevent background scrolling while modal is open
+    // Prevent background scrolling while modal is open (works on iOS)
     const prevOverflow = document.body.style.overflow;
+    const prevPosition = document.body.style.position;
+    const prevTop = document.body.style.top;
+    const scrollY = window.scrollY;
+
     document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
 
     return () => {
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = prevOverflow;
+      document.body.style.position = prevPosition;
+      document.body.style.top = prevTop;
+      // restore scroll position
+      window.scrollTo(0, scrollY);
     };
   }, [onClose]);
 
