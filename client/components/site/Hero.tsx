@@ -32,6 +32,9 @@ export function Hero() {
             <a href="#contact" className="inline-flex items-center gap-2 rounded-md border px-5 py-3 text-sm font-semibold hover:bg-accent/60 transition transform active:scale-95 focus:outline-none focus:ring-2 focus:ring-primary">
               Hire Me
             </a>
+            <a href="https://cdn.builder.io/o/assets%2F13e4ac3fb51f402398bc916f1280a140%2F0f296d2b72064c288679c29887927aa7?alt=media&token=eaf36571-61f2-4cad-975a-58e1db1a4d3c&apiKey=13e4ac3fb51f402398bc916f1280a140" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium border hover:bg-accent/60">
+              Download Resume
+            </a>
           </div>
         </motion.div>
         <motion.div initial={{ opacity: 0, y: 24, scale: 0.98 }} whileInView={{ opacity: 1, y: 0, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.1 }}>
