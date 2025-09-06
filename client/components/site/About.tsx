@@ -10,14 +10,16 @@ export function About() {
         </div>
         <div className="lg:col-span-2 space-y-4">
           <p className="text-muted-foreground">
-            I'm a MERN Stack Developer passionate about building performant, accessible, and maintainable digital products. I love writing clean, testable code and collaborating with teams to turn ideas into impactful user experiences.
+            MERN Stack Developer and BS Software Engineering graduate with a solid foundation in object-oriented programming, data structures, and backend development. Proficient in JavaScript, Node.js, Express.js, React, and MongoDB, with hands-on experience in designing RESTful APIs, optimizing performance, and deploying applications on AWS with CI/CD pipelines.
           </p>
           <p className="text-muted-foreground">
-            I graduated with a BS in Software Engineering from COMSATS University, where I honed my foundations in computer science, algorithms, and modern web development.
+            Committed to writing clean, maintainable code and contributing effectively within agile, collaborative teams. I enjoy building scalable systems, designing component-driven UIs, and improving developer workflows through automation and best practices.
           </p>
-          <p className="text-muted-foreground">
-            My toolkit spans React, Node.js, Express, MongoDB, and modern tooling. I enjoy system design, component architecture, and bringing delightful micro-interactions to life.
-          </p>
+          <div className="mt-2 text-sm text-muted-foreground">
+            <strong>Education:</strong> BS Software Engineering, COMSATS University Islamabad – Lahore Campus (GPA: 3.17)
+            <br />
+            <strong>Experience:</strong> Web Developer Intern at Cyberappx Software House (Sep '24 – Jul '25)
+          </div>
         </div>
       </motion.div>
     </section>
