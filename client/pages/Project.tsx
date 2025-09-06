@@ -34,10 +34,9 @@ export default function ProjectPage() {
           <div className="mt-6">
             <h3 className="font-semibold">Features</h3>
             <ul className="mt-2 list-disc pl-5 text-muted-foreground">
-              <li>Responsive UI with focus on performance and accessibility</li>
-              <li>Authentication and role-based access</li>
-              <li>Real-time updates where applicable</li>
-              <li>Stripe integration for payments (where applicable)</li>
+              {(project.features ?? []).map((f) => (
+                <li key={f}>{f}</li>
+              ))}
             </ul>
           </div>
         </div>
