@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Lightbox } from "./Lightbox";
 
-type Project = {
+export type Project = {
   title: string;
   description: string;
   image: string;
