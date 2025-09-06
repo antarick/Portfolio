@@ -54,6 +54,11 @@ export function Contact() {
               <a target="_blank" href="https://github.com/" className="hover:underline">GitHub</a>
             </li>
           </ul>
+
+          <div className="mt-6 flex items-center gap-3">
+            <a href="https://cdn.builder.io/o/assets%2F13e4ac3fb51f402398bc916f1280a140%2F0f296d2b72064c288679c29887927aa7?alt=media&token=eaf36571-61f2-4cad-975a-58e1db1a4d3c&apiKey=13e4ac3fb51f402398bc916f1280a140" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground">Download Resume</a>
+            <a href="https://www.linkedin.com/in/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-md border px-4 py-2 text-sm">View LinkedIn</a>
+          </div>
         </motion.div>
       </div>
     </section>
