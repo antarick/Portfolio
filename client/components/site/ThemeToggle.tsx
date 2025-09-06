@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 export function ThemeToggle() {
   const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+
   useEffect(() => setMounted(true), []);
   const isDark = (resolvedTheme ?? theme) === "dark";
 
@@ -12,9 +13,9 @@ export function ThemeToggle() {
     return (
       <button
         aria-label="Toggle theme"
-        className="h-10 w-10 rounded-md border border-border flex items-center justify-center"
+        className="h-9 w-9 sm:h-10 sm:w-10 rounded-md border border-border flex items-center justify-center"
       >
-        <Sun className="size-5" />
+        <Sun className="size-5 transition-transform duration-300" />
       </button>
     );
 
@@ -22,9 +23,13 @@ export function ThemeToggle() {
     <button
       aria-label="Toggle theme"
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="h-10 w-10 rounded-md border border-border flex items-center justify-center hover:bg-accent/60 transition-colors"
+      className="h-9 w-9 sm:h-10 sm:w-10 rounded-md border border-border flex items-center justify-center hover:bg-accent/60 transition-colors"
     >
-      {isDark ? <Sun className="size-5" /> : <Moon className="size-5" />}
+      {isDark ? (
+        <Sun className="size-5 transition-transform duration-300" />
+      ) : (
+        <Moon className="size-5 transition-transform duration-300" />
+      )}
     </button>
   );
 }

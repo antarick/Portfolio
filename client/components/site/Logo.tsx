@@ -9,11 +9,9 @@ export function Logo({ className }: { className?: string }) {
     >
       {/* Nx monogram in gradient rounded square */}
       <svg
-        width="45"
-        height="45"
+        className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-lg"
         viewBox="0 0 100 100"
         xmlns="http://www.w3.org/2000/svg"
-        className="rounded-lg"
       >
         <defs>
           <linearGradient id="nx-grad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -23,14 +21,7 @@ export function Logo({ className }: { className?: string }) {
         </defs>
 
         {/* Rounded square background */}
-        <rect
-          x="0"
-          y="0"
-          width="100"
-          height="100"
-          rx="20"
-          fill="url(#nx-grad)"
-        />
+        <rect x="0" y="0" width="100" height="100" rx="20" fill="url(#nx-grad)" />
 
         {/* N shape */}
         <line x1="25" y1="75" x2="25" y2="25" stroke="white" strokeWidth="10" />
@@ -41,7 +32,6 @@ export function Logo({ className }: { className?: string }) {
         <line x1="37" y1="37" x2="63" y2="63" stroke="white" strokeWidth="6" />
         <line x1="63" y1="37" x2="37" y2="63" stroke="white" strokeWidth="6" />
       </svg>
-
     </button>
   );
 }
