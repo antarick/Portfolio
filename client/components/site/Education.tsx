@@ -42,7 +42,7 @@ export function Education() {
               BS Software Engineering
             </h3>
             <p className="mt-1 text-xs text-muted-foreground">
-              2020 – 2024
+              2021 – 2025
             </p>
           </motion.div>
 
