@@ -73,7 +73,7 @@ export function Hero() {
                 href="#contact"
                 className="flex-1 text-center inline-flex items-center justify-center gap-2 rounded-md border px-4 py-2 sm:px-5 sm:py-3 text-sm font-semibold hover:bg-accent/60 active:scale-95 focus:outline-none focus:ring-2 focus:ring-primary"
               >
-                Hire Me
+                Contact Me
               </a>
             </div>
 

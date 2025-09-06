@@ -73,12 +73,6 @@ export function Navbar() {
                 {n.label}
               </button>
             ))}
-            <button
-              onClick={() => onNav("contact")}
-              className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-            >
-              Hire Me
-            </button>
           </div>
         </div>
       )}
