@@ -10,6 +10,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import ProjectPage from "./pages/Project";
 import { ThemeProvider } from "@/components/site/ThemeProvider";
+import { ScrollProgress } from "@/components/site/ScrollProgress";
 
 const queryClient = new QueryClient();
 
