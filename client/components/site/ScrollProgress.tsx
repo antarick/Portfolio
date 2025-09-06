@@ -20,7 +20,10 @@ export function ScrollProgress() {
 
   return (
     <div aria-hidden className="fixed left-0 right-0 top-14 h-1 z-50">
-      <div className="h-1 bg-primary/40 transition-all" style={{ width: `${width}%` }} />
+      <div
+        className="h-1 bg-primary/40 transition-all"
+        style={{ width: `${width}%` }}
+      />
     </div>
   );
 }

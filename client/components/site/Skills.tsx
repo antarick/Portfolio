@@ -41,7 +41,9 @@ export function Skills() {
     <section id="skills" className="section scroll-mt-24">
       <div className="mb-8">
         <h2 className="font-display text-3xl sm:text-4xl font-bold">Skills</h2>
-        <p className="mt-2 text-muted-foreground">A toolkit for building robust web applications</p>
+        <p className="mt-2 text-muted-foreground">
+          A toolkit for building robust web applications
+        </p>
       </div>
       <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
         {groups.map((g, idx) => (
@@ -59,7 +61,10 @@ export function Skills() {
             </div>
             <div className="mt-4 flex flex-wrap gap-2">
               {g.items.map((item) => (
-                <span key={item} className="inline-flex items-center rounded-md border px-3 py-1 text-xs font-medium text-muted-foreground hover:text-foreground hover:bg-accent/60 transition-colors">
+                <span
+                  key={item}
+                  className="inline-flex items-center rounded-md border px-3 py-1 text-xs font-medium text-muted-foreground hover:text-foreground hover:bg-accent/60 transition-colors"
+                >
                   {item}
                 </span>
               ))}

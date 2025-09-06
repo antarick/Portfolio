@@ -93,13 +93,25 @@
 }
 
 @layer base {
-  * { @apply border-border; }
-  html { scroll-behavior: smooth; }
-  body { @apply bg-background text-foreground font-sans antialiased; }
-  ::selection { background-color: hsl(var(--primary) / 0.18); }
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+  ::selection {
+    background-color: hsl(var(--primary) / 0.18);
+  }
 }
 
 @layer utilities {
-  .container-px { @apply px-4 sm:px-6 lg:px-8; }
-  .section { @apply container mx-auto container-px py-16 sm:py-24; }
+  .container-px {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+  .section {
+    @apply container mx-auto container-px py-16 sm:py-24;
+  }
 }

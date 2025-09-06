@@ -8,11 +8,15 @@ export function ThemeToggle() {
   useEffect(() => setMounted(true), []);
   const isDark = (resolvedTheme ?? theme) === "dark";
 
-  if (!mounted) return (
-    <button aria-label="Toggle theme" className="h-10 w-10 rounded-md border border-border flex items-center justify-center">
-      <Sun className="size-5" />
-    </button>
-  );
+  if (!mounted)
+    return (
+      <button
+        aria-label="Toggle theme"
+        className="h-10 w-10 rounded-md border border-border flex items-center justify-center"
+      >
+        <Sun className="size-5" />
+      </button>
+    );
 
   return (
     <button
