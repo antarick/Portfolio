@@ -1,6 +1,5 @@
 import { motion, useViewportScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { useEffect, useState } from "react";
 
 export function Hero() {
   const { scrollY } = useViewportScroll();
