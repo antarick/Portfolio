@@ -93,6 +93,8 @@ function ProjectCard({ p, i }: { p: Project; i: number }) {
   );
 }
 
+export { projects };
+
 export function Projects() {
   return (
     <section id="projects" className="section scroll-mt-24">
