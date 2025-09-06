@@ -49,7 +49,7 @@ export function Navbar() {
             aria-label="Open menu"
             aria-expanded={open}
             onClick={() => setOpen((o) => !o)}
-            className="h-8 w-8 sm:h-9 sm:w-9 rounded-md border border-border flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-primary"
+            className="h-9 w-9 sm:h-10 sm:w-10 rounded-md border border-border flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-primary"
           >
             {open ? <X className="size-5" /> : <Menu className="size-5" />}
           </button>

@@ -1,5 +1,6 @@
 import { motion, useViewportScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { useEffect, useState } from "react";
 
 export function Hero() {
   const { scrollY } = useViewportScroll();
@@ -7,18 +8,30 @@ export function Hero() {
   const opacity = useTransform(scrollY, [0, 300], [1, 0.8]);
 
   return (
-    <section id="home" className="section relative overflow-hidden lg:relative-none lg:overflow-visible" aria-label="Hero">
+    <section id="home" className="section relative overflow-hidden md:relative-none md:overflow-visible" aria-label="Hero">
       <div className="grid gap-10 lg:gap-16 xl:gap-20 items-center lg:grid-cols-2">
         {/* Top-left blob */}
         <motion.div
           style={{ y }}
-          className="absolute -top-24 -left-16 h-48 w-48 sm:h-64 sm:w-64 lg:h-80 lg:w-80 xl:h-[28rem] xl:w-[28rem] rounded-full bg-gradient-to-tr from-primary/30 to-fuchsia-500/20 blur-3xl"
+          className="
+            absolute
+            -top-12 -left-8 sm:-top-16 sm:-left-12
+            h-48 w-48 sm:h-64 sm:w-64 lg:h-80 lg:w-80 xl:h-[28rem] xl:w-[28rem]
+            rounded-full
+            bg-gradient-to-tr from-primary/30 to-fuchsia-500/20 blur-3xl
+          "
         />
 
         {/* Bottom-right blob */}
         <motion.div
           style={{ y }}
-          className="absolute -bottom-24 -right-16 h-48 w-48 sm:h-64 sm:w-64 lg:h-80 lg:w-80 xl:h-[28rem] xl:w-[28rem] rounded-full bg-gradient-to-tr from-fuchsia-500/25 to-primary/20 blur-3xl"
+          className="
+            absolute
+            -bottom-12 -right-8 sm:-bottom-16 sm:-right-12
+            h-48 w-48 sm:h-64 sm:w-64 lg:h-80 lg:w-80 xl:h-[28rem] xl:w-[28rem]
+            rounded-full
+            bg-gradient-to-tr from-fuchsia-500/25 to-primary/20 blur-3xl
+          "
         />
       </div>
 
