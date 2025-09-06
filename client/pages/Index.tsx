@@ -12,7 +12,7 @@ export default function Index() {
   return (
     <div>
       <Navbar />
-      <main>
+      <main id="main" role="main">
         <Hero />
         <About />
         <Skills />
