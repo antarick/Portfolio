@@ -3,7 +3,7 @@ import { Building2 } from "lucide-react";
 
 export function Experience() {
   return (
-    <section id="experience" className="section scroll-mt-24">
+    <section id="experience" className="section scroll-mt-2">
       <div className="mb-8">
         <h2 className="font-display text-3xl sm:text-4xl font-bold">
           Experience

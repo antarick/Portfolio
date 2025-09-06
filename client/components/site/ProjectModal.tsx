@@ -1,234 +1,221 @@
-import { Lightbox } from "./Lightbox";
 import { ExternalLink, Github, X } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
 import type { Project } from "./Projects";
 import { motion } from "framer-motion";
 
-const decorative =
-  "https://cdn.builder.io/api/v1/image/assets%2F13e4ac3fb51f402398bc916f1280a140%2Fcec243fcbef14136b34d1b1fb2e989c5?format=webp&width=800";
-
 export function ProjectModal({
-  project,
-  onClose,
-}: {
+                               project,
+                               onClose,
+                             }: {
   project: Project | null;
   onClose: () => void;
 }) {
-  const [light, setLight] = useState<string | null>(null);
-  const dialogRef = useRef<HTMLDivElement | null>(null);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [activeImage, setActiveImage] = useState(0);
+  const modalRef = useRef<HTMLDivElement>(null);
+  const images = project?.images ?? (project?.image ? [project.image] : []);
 
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        lightboxOpen ? setLightboxOpen(false) : onClose();
+      }
+      if (lightboxOpen && (e.key === "ArrowRight" || e.key === "ArrowLeft")) {
+        const direction = e.key === "ArrowRight" ? 1 : -1;
+        setActiveImage(
+          (prev) => (prev + direction + images.length) % images.length
+        );
+      }
     };
-    document.addEventListener("keydown", onKey);
 
-    // Prevent background scrolling while modal is open (works on iOS)
-    const prevOverflow = document.body.style.overflow;
-    const prevPosition = document.body.style.position;
-    const prevTop = document.body.style.top;
-    const scrollY = window.scrollY;
-
+    document.addEventListener("keydown", handleKeyDown);
     document.body.style.overflow = "hidden";
-    document.body.style.position = "fixed";
-    document.body.style.top = `-${scrollY}px`;
 
     return () => {
-      document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = prevOverflow;
-      document.body.style.position = prevPosition;
-      document.body.style.top = prevTop;
-      // restore scroll position
-      window.scrollTo(0, scrollY);
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "unset";
     };
-  }, [onClose]);
+  }, [onClose, lightboxOpen, images.length]);
 
-  useEffect(() => {
-    const el = dialogRef.current;
-    const first = el?.querySelector<HTMLElement>("button, a, input, textarea");
-    first?.focus();
-  }, [project]);
+  const openLightbox = (index: number) => {
+    if (images.length > 0) {
+      setActiveImage(index);
+      setLightboxOpen(true);
+    }
+  };
 
   if (!project) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        className="absolute inset-0 bg-black/65 backdrop-blur-md"
-        onClick={onClose}
-      />
-
-      <motion.div
-        ref={dialogRef}
-        role="dialog"
-        aria-modal="true"
-        aria-label={`${project.title} case study`}
-        initial={{ y: 30, opacity: 0, scale: 0.98 }}
-        animate={{ y: 0, opacity: 1, scale: 1 }}
-        transition={{ duration: 0.28, ease: "easeOut" }}
-        style={{ WebkitOverflowScrolling: "touch" }}
-        className="relative w-full max-w-5xl rounded-2xl bg-card border p-0 overflow-auto max-h-[92vh] shadow-2xl"
+    <div
+      className="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm"
+      onClick={onClose}
+    >
+      <div
+        ref={modalRef}
+        className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
+                   w-full h-full sm:h-auto sm:max-w-4xl sm:max-h-[90vh]
+                   bg-background rounded-none sm:rounded-xl shadow-xl
+                   overflow-hidden flex flex-col"
+        onClick={(e) => e.stopPropagation()}
       >
-        {/* Top visual */}
-        <div className="relative h-56 md:h-72 lg:h-56 bg-gradient-to-r from-primary/10 to-fuchsia-10">
-          <img
-            src={project.image || decorative}
-            alt={project.title}
-            className="absolute inset-0 h-full w-full object-cover brightness-75"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+        {/* Header with image */}
+        <div className="relative h-40 sm:h-48 md:h-60 bg-gradient-to-r from-primary/15 via-purple-500/10 to-fuchsia-500/10">
+          {images.length > 0 && (
+            <img
+              src={images[activeImage]}
+              alt={project.title}
+              className="w-full h-full object-cover cursor-pointer"
+              onClick={() => openLightbox(activeImage)}
+            />
+          )}
+
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+
           <button
-            aria-label="Close"
             onClick={onClose}
-            className="absolute right-4 top-4 z-20 inline-flex h-10 w-10 items-center justify-center rounded-full bg-background/70 border p-2 hover:scale-105 transition-transform focus:outline-none focus:ring-2 focus:ring-primary"
+            className="absolute right-4 top-4 z-10 size-10 rounded-full bg-background/80 border border-border backdrop-blur-sm flex items-center justify-center hover:bg-background transition-colors"
+            aria-label="Close modal"
           >
             <X className="size-5" />
           </button>
 
-          <div className="absolute left-6 bottom-6 z-20 text-white">
-            <span className="text-sm font-medium bg-black/30 px-2 py-1 rounded-md">
+          <div className="absolute bottom-4 left-4 sm:left-6 text-white">
+            <span className="inline-block text-xs font-medium bg-primary/90 px-3 py-1.5 rounded-full mb-2">
               Case Study
             </span>
-            <h2 className="mt-2 text-2xl md:text-3xl font-display font-bold leading-tight">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold">
               {project.title}
             </h2>
-            <p className="mt-2 max-w-2xl text-sm text-white/85">
+            <p className="mt-1 text-xs sm:text-sm text-white/90 max-w-2xl">
               {project.description}
             </p>
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-6 p-6">
-          {/* Left: details */}
-          <div className="lg:col-span-2 space-y-5">
-            <div>
-              <h3 className="text-lg font-semibold">Gallery</h3>
-              <div className="mt-3 grid sm:grid-cols-2 gap-3">
-                {(project.images ?? [project.image]).map((img) => (
-                  <motion.button
-                    key={img}
-                    onClick={() => setLight(img)}
-                    whileHover={{ scale: 1.02 }}
-                    className="rounded-lg overflow-hidden border bg-card p-0 focus:outline-none focus:ring-2 focus:ring-primary"
-                  >
-                    <img
-                      src={img}
-                      alt={project.title}
-                      className="w-full h-44 object-cover"
-                    />
-                  </motion.button>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-semibold">Features</h3>
-              <ul className="mt-3 grid gap-2 list-disc pl-5 text-muted-foreground">
-                {(project.features ?? []).map((f) => (
-                  <li key={f} className="bg-muted/5 p-2 rounded-md">
-                    {f}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="mt-2 flex flex-wrap items-center gap-3">
-              <a
-                href="#contact"
-                onClick={(e) => {
-                  e.preventDefault();
-                  onClose();
-                  const el = document.getElementById("contact");
-                  el?.scrollIntoView({ behavior: "smooth" });
-                }}
-                className="inline-flex items-center gap-2 rounded-md bg-gradient-to-r from-primary to-fuchsia-500 px-4 py-2 text-sm font-semibold text-primary-foreground shadow hover:brightness-105 transition"
-              >
-                Get in touch
-              </a>
-
-              {project.links.live && (
-                <a
-                  href={project.links.live}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-md border px-4 py-2 text-sm font-medium hover:bg-accent/30 transition"
-                >
-                  Visit Live <ExternalLink className="size-4" />
-                </a>
-              )}
-
-              {project.links.repo && (
-                <a
-                  href={project.links.repo}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-md border px-4 py-2 text-sm font-medium hover:bg-accent/20 transition"
-                >
-                  View Code <Github className="size-4" />
-                </a>
+        {/* Content area */}
+        <div className="overflow-y-auto flex-1 p-4 sm:p-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {/* Main content */}
+            <div className="lg:col-span-2 space-y-6">
+              {/* Features */}
+              {project.features && project.features.length > 0 && (
+                <div>
+                  <h3 className="text-lg font-semibold mb-3">Key Features</h3>
+                  <ul className="space-y-3">
+                    {project.features.map((feature, index) => (
+                      <motion.li
+                        key={feature}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.05 }}
+                        className="flex items-start gap-3 p-3 rounded-lg bg-muted/50"
+                      >
+                        <div className="mt-1 size-2 rounded-full bg-primary shrink-0" />
+                        <span className="text-muted-foreground">{feature}</span>
+                      </motion.li>
+                    ))}
+                  </ul>
+                </div>
               )}
             </div>
-          </div>
 
-          {/* Right: aside */}
-          <aside className="rounded-xl border bg-card p-4 sticky top-6 h-fit">
-            <div className="flex flex-col gap-4">
-              <div>
-                <h4 className="text-sm font-medium text-muted-foreground">
-                  Tech Stack
-                </h4>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {project.stack.map((s) => (
+            {/* Sidebar */}
+            <div className="lg:col-span-1 space-y-6">
+              {/* Tech Stack */}
+              <div className="rounded-xl border border-border bg-card p-5">
+                <h4 className="text-lg font-semibold mb-3">Tech Stack</h4>
+                <div className="flex flex-wrap gap-2">
+                  {project.stack.map((tech) => (
                     <span
-                      key={s}
-                      className="inline-flex items-center rounded-full bg-muted/10 px-3 py-1 text-xs font-medium text-muted-foreground"
+                      key={tech}
+                      className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary border border-primary/20"
                     >
-                      {s}
+                      {tech}
                     </span>
                   ))}
                 </div>
               </div>
 
-              <div>
-                <h4 className="text-sm font-medium text-muted-foreground">
-                  Project Details
-                </h4>
-                <div className="mt-2 text-sm text-muted-foreground grid gap-1">
-                  <div>
-                    <strong>Role:</strong> MERN Stack Developer
-                  </div>
-                  <div>
-                    <strong>Duration:</strong> Sep '24 – Jul '25
-                  </div>
-                  <div>
-                    <strong>Type:</strong>{" "}
-                    {project.stack.includes("OpenAI") ? "AI" : "Web App"}
-                  </div>
-                </div>
-              </div>
+              {/* Project Links */}
+              <div className="flex flex-col gap-3">
+                {project.links.live && (
+                  <motion.a
+                    whileHover={{ scale: 1.02 }}
+                    href={project.links.live}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center justify-center gap-2 rounded-xl bg-primary px-4 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
+                  >
+                    Visit Live Site <ExternalLink className="size-4" />
+                  </motion.a>
+                )}
 
-              <div>
-                <img
-                  src={decorative}
-                  alt="decor"
-                  className="mt-2 rounded-md opacity-15"
-                />
+                {project.links.repo && (
+                  <motion.a
+                    whileHover={{ scale: 1.02 }}
+                    href={project.links.repo}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center justify-center gap-2 rounded-xl border border-border px-4 py-3 text-sm font-medium hover:bg-accent transition-colors"
+                  >
+                    View Code <Github className="size-4" />
+                  </motion.a>
+                )}
               </div>
             </div>
-          </aside>
+          </div>
         </div>
 
-        {light && (
-          <Lightbox
-            src={light}
-            alt={project.title}
-            onClose={() => setLight(null)}
-          />
+        {/* Lightbox */}
+        {lightboxOpen && (
+          <div
+            className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center"
+            onClick={() => setLightboxOpen(false)}
+          >
+            <div
+              className="relative max-w-4xl max-h-full p-4"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img
+                src={images[activeImage]}
+                alt={project.title}
+                className="max-w-full max-h-[80vh] object-contain"
+              />
+
+              {images.length > 1 && (
+                <>
+                  <button
+                    onClick={() =>
+                      setActiveImage(
+                        (activeImage - 1 + images.length) % images.length
+                      )
+                    }
+                    className="absolute left-4 top-1/2 -translate-y-1/2 size-10 rounded-full bg-black/50 text-white flex items-center justify-center"
+                  >
+                    ‹
+                  </button>
+                  <button
+                    onClick={() =>
+                      setActiveImage((activeImage + 1) % images.length)
+                    }
+                    className="absolute right-4 top-1/2 -translate-y-1/2 size-10 rounded-full bg-black/50 text-white flex items-center justify-center"
+                  >
+                    ›
+                  </button>
+                </>
+              )}
+
+              <button
+                onClick={() => setLightboxOpen(false)}
+                className="absolute top-4 right-4 size-10 rounded-full bg-black/50 text-white flex items-center justify-center"
+              >
+                <X className="size-5" />
+              </button>
+            </div>
+          </div>
         )}
-      </motion.div>
+      </div>
     </div>
   );
 }

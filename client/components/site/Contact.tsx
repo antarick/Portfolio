@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { Mail, Phone, Github, Linkedin } from "lucide-react";
 import { useState } from "react";
+import { SiReact, SiNodedotjs, SiMongodb, SiTailwindcss, SiGithub } from "react-icons/si";
 
 export function Contact() {
   const [name, setName] = useState("");
@@ -11,26 +11,32 @@ export function Contact() {
     e.preventDefault();
     const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
     window.open(
-      `mailto:syedmu729@gmail.com?subject=${encodeURIComponent("Portfolio Inquiry")}&body=${body}`,
+      `mailto:syedmu729@gmail.com?subject=${encodeURIComponent(
+        "Portfolio Inquiry",
+      )}&body=${body}`,
       "_blank",
     );
   };
 
   return (
-    <section id="contact" className="section scroll-mt-24">
-      <div className="mb-8">
-        <h2 className="font-display text-3xl sm:text-4xl font-bold">Contact</h2>
+    <section id="contact" className="section scroll-mt-2">
+      <div className="flex-start mb-8">
+        <h2 className="font-display text-3xl sm:text-4xl font-bold">
+          Contact
+        </h2>
         <p className="mt-2 text-muted-foreground">
           Let's build something great together
         </p>
       </div>
-      <div>
+
+      <div className="grid lg:grid-cols-2 gap-8 items-center">
+        {/* Left side: Contact Form */}
         <motion.form
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           onSubmit={submit}
-          className="rounded-xl border bg-card p-6 space-y-4 max-w-2xl"
+          className="rounded-xl border bg-card p-6 sm:p-8 space-y-4 shadow-lg"
         >
           <div>
             <label className="block text-sm font-medium">Name</label>
@@ -42,6 +48,7 @@ export function Contact() {
               placeholder="Your name"
             />
           </div>
+
           <div>
             <label className="block text-sm font-medium">Email</label>
             <input
@@ -53,6 +60,7 @@ export function Contact() {
               placeholder="you@example.com"
             />
           </div>
+
           <div>
             <label className="block text-sm font-medium">Message</label>
             <textarea
@@ -64,21 +72,31 @@ export function Contact() {
               placeholder="Tell me about your project"
             />
           </div>
-          <div className="flex items-center gap-3">
+
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3">
             <button
               type="submit"
-              className="inline-flex items-center rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:opacity-90"
+              className="inline-flex items-center justify-center rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:opacity-90"
             >
               Send Message
             </button>
-            <a
-              href="mailto:syedmu729@gmail.com"
-              className="text-sm text-muted-foreground hover:underline"
-            >
-              Or email me directly at syedmu729@gmail.com
-            </a>
           </div>
         </motion.form>
+
+        {/* Right side: Tech Icons Grid */}
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="hidden lg:grid grid-cols-2 gap-6 text-6xl text-muted-foreground/70 place-items-center"
+        >
+          <SiReact className="hover:text-cyan-400 transition" />
+          <SiNodedotjs className="hover:text-green-500 transition" />
+          <SiMongodb className="hover:text-emerald-500 transition" />
+          <SiTailwindcss className="hover:text-sky-400 transition" />
+          <SiGithub className="hover:text-white transition col-span-2" />
+        </motion.div>
       </div>
     </section>
   );

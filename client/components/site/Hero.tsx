@@ -1,34 +1,27 @@
 import { motion, useViewportScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { useEffect, useState } from "react";
 
 export function Hero() {
   const { scrollY } = useViewportScroll();
   const y = useTransform(scrollY, [0, 400], [0, -40]);
   const opacity = useTransform(scrollY, [0, 300], [1, 0.8]);
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
 
   return (
-    <section
-      id="home"
-      className="relative section pt-16 sm:pt-20 md:pt-24 lg:pt-32 px-4 sm:px-6 lg:px-12 xl:px-24"
-      aria-label="Hero"
-    >
-      {/* Background gradients */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
-      >
+    <section id="home" className="section relative overflow-hidden lg:relative-none lg:overflow-visible" aria-label="Hero">
+      <div className="grid gap-10 lg:gap-16 xl:gap-20 items-center lg:grid-cols-2">
+        {/* Top-left blob */}
         <motion.div
           style={{ y }}
-          className="absolute -top-24 -left-16 h-48 w-48 sm:h-64 sm:w-64 lg:h-80 lg:w-80 rounded-full bg-gradient-to-tr from-primary/30 to-fuchsia-500/20 blur-3xl"
+          className="absolute -top-24 -left-16 h-48 w-48 sm:h-64 sm:w-64 lg:h-80 lg:w-80 xl:h-[28rem] xl:w-[28rem] rounded-full bg-gradient-to-tr from-primary/30 to-fuchsia-500/20 blur-3xl"
         />
+
+        {/* Bottom-right blob */}
         <motion.div
           style={{ y }}
-          className="absolute -bottom-24 -right-16 h-48 w-48 sm:h-64 sm:w-64 lg:h-80 lg:w-80 rounded-full bg-gradient-to-tr from-fuchsia-500/25 to-primary/20 blur-3xl"
+          className="absolute -bottom-24 -right-16 h-48 w-48 sm:h-64 sm:w-64 lg:h-80 lg:w-80 xl:h-[28rem] xl:w-[28rem] rounded-full bg-gradient-to-tr from-fuchsia-500/25 to-primary/20 blur-3xl"
         />
       </div>
+
 
       {/* Content grid */}
       <div className="grid gap-12 lg:gap-16 items-center lg:grid-cols-2">
@@ -55,28 +48,34 @@ export function Hero() {
           </p>
 
           {/* Buttons */}
-          <div className="mt-6 sm:mt-8 flex flex-wrap gap-3">
+          <div className="mt-6 sm:mt-8 flex flex-col gap-3">
+            {/* First row (2 buttons side by side on mobile, inline on sm+) */}
+            <div className="flex flex-col sm:flex-row gap-3">
+              <a
+                href="#projects"
+                className="flex-1 text-center inline-flex items-center justify-center gap-2 rounded-md bg-primary px-4 py-2 sm:px-5 sm:py-3 text-sm font-semibold text-primary-foreground shadow-glow hover:opacity-90 transition active:scale-95 focus:outline-none focus:ring-2 focus:ring-primary"
+              >
+                View My Work <ArrowRight className="size-4" />
+              </a>
+              <a
+                href="#contact"
+                className="flex-1 text-center inline-flex items-center justify-center gap-2 rounded-md border px-4 py-2 sm:px-5 sm:py-3 text-sm font-semibold hover:bg-accent/60 transition active:scale-95 focus:outline-none focus:ring-2 focus:ring-primary"
+              >
+                Hire Me
+              </a>
+            </div>
+
+            {/* Second row (always full width on mobile, inline on sm+) */}
             <a
-              href="#projects"
-              className="flex-1 sm:flex-none text-center inline-flex items-center justify-center gap-2 rounded-md bg-primary px-4 py-2 sm:px-5 sm:py-3 text-sm font-semibold text-primary-foreground shadow-glow hover:opacity-90 transition active:scale-95 focus:outline-none focus:ring-2 focus:ring-primary"
-            >
-              View My Work <ArrowRight className="size-4" />
-            </a>
-            <a
-              href="#contact"
-              className="flex-1 sm:flex-none text-center inline-flex items-center justify-center gap-2 rounded-md border px-4 py-2 sm:px-5 sm:py-3 text-sm font-semibold hover:bg-accent/60 transition active:scale-95 focus:outline-none focus:ring-2 focus:ring-primary"
-            >
-              Hire Me
-            </a>
-            <a
-              href="https://cdn.builder.io/o/assets%2F13e4ac3fb51f402398bc916f1280a140%2F0f296d2b72064c288679c29887927aa7?alt=media&token=eaf36571-61f2-4cad-975a-58e1db1a4d3c&apiKey=13e4ac3fb51f402398bc916f1280a140"
+              href="/resume.pdf"
               target="_blank"
               rel="noreferrer"
-              className="flex-1 sm:flex-none text-center inline-flex items-center justify-center gap-2 rounded-md border px-4 py-2 sm:px-5 sm:py-3 text-sm font-medium hover:bg-accent/60"
+              className="flex-1 text-center inline-flex items-center justify-center gap-2 rounded-md border px-4 py-2 sm:px-5 sm:py-3 text-sm font-medium hover:bg-accent/60"
             >
               Download Resume
             </a>
           </div>
+
         </motion.div>
 
         {/* Right column - Code Editor Preview */}
@@ -115,16 +114,6 @@ export function Hero() {
           </div>
         </motion.div>
       </div>
-
-      {/* Decorative vertical line (desktop only) */}
-      {mounted && (
-        <div
-          aria-hidden
-          className="pointer-events-none absolute right-4 top-4 hidden md:block"
-        >
-          <div className="w-1 h-24 sm:h-32 rounded-full bg-gradient-to-b from-primary to-transparent opacity-60" />
-        </div>
-      )}
     </section>
   );
 }

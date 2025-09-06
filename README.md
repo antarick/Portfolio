@@ -17,7 +17,7 @@ This is my personal portfolio website showcasing my skills, projects, and experi
 ## 🛠️ Tech Stack  
 - **Frontend:** React.js , Tailwind CSS  
 - **Animations:** Framer Motion  
-- **Deployment:** AWS
+- **Deployment:** Netlify
 
 ---
 

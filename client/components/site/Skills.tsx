@@ -38,7 +38,7 @@ const groups = [
 
 export function Skills() {
   return (
-    <section id="skills" className="section scroll-mt-24">
+    <section id="skills" className="section scroll-mt-2">
       <div className="mb-8">
         <h2 className="font-display text-3xl sm:text-4xl font-bold">Skills</h2>
         <p className="mt-2 text-muted-foreground">
