@@ -94,7 +94,9 @@ const projects: Project[] = [
   },
 ];
 
-function FeaturedProject({ p }: { p: Project }) {
+import { ProjectModal } from "./ProjectModal";
+
+function FeaturedProject({ p, onOpen }: { p: Project; onOpen: (p: Project) => void }) {
   return (
     <motion.article initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="relative overflow-hidden rounded-2xl border bg-card lg:flex lg:items-stretch">
       <div className="lg:w-1/2 relative h-64 lg:h-auto">
@@ -114,14 +116,14 @@ function FeaturedProject({ p }: { p: Project }) {
           {p.links.live && (
             <a href={p.links.live} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground">View Live</a>
           )}
-          <a href={`/projects/${p.slug}`} className="inline-flex items-center gap-2 rounded-md border px-4 py-2 text-sm font-medium">Case Study</a>
+          <button onClick={() => onOpen(p)} className="inline-flex items-center gap-2 rounded-md border px-4 py-2 text-sm font-medium">Case Study</button>
         </div>
       </div>
     </motion.article>
   );
 }
 
-function ProjectCard({ p, i }: { p: Project; i: number }) {
+function ProjectCard({ p, i, onOpen }: { p: Project; i: number; onOpen: (p: Project) => void }) {
   const [light, setLight] = useState<string | null>(null);
   return (
     <motion.article
@@ -138,7 +140,7 @@ function ProjectCard({ p, i }: { p: Project; i: number }) {
           <h4 className="text-lg font-semibold text-white line-clamp-2">{p.title}</h4>
           <p className="mt-1 text-sm text-white/90 line-clamp-2">{p.description}</p>
           <div className="mt-3 flex items-center gap-2">
-            <a href={`/projects/${p.slug}`} className="inline-flex items-center gap-2 rounded-md bg-white/10 px-3 py-2 text-sm font-medium text-white backdrop-blur-sm">Case Study</a>
+            <button onClick={() => onOpen(p)} className="inline-flex items-center gap-2 rounded-md bg-white/10 px-3 py-2 text-sm font-medium text-white backdrop-blur-sm">Case Study</button>
             {p.links.live && (
               <a href={p.links.live} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-md border border-white/10 bg-white/5 px-3 py-2 text-sm font-medium text-white/90">Live</a>
             )}
@@ -161,6 +163,7 @@ export { projects };
 
 export function Projects() {
   const [filter, setFilter] = useState<string>("All");
+  const [selected, setSelected] = useState<Project | null>(null);
   const categories = ["All", "Web", "AI", "Realtime", "Payments"];
   const featured = projects[0];
   const list = projects.filter((p) => filter === "All" || (p.stack || []).some((s) => s.toLowerCase().includes(filter.toLowerCase())));
@@ -185,14 +188,16 @@ export function Projects() {
       </div>
 
       <div className="mb-6">
-        <FeaturedProject p={featured} />
+        <FeaturedProject p={featured} onOpen={(p)=>setSelected(p)} />
       </div>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {list.slice(1).map((p, i) => (
-          <ProjectCard key={p.slug} p={p} i={i} />
+          <ProjectCard key={p.slug} p={p} i={i} onOpen={(p)=>setSelected(p)} />
         ))}
       </div>
+
+      {selected && <ProjectModal project={selected} onClose={() => setSelected(null)} />}
     </section>
   );
 }
