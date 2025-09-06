@@ -37,6 +37,7 @@ export function Navbar() {
           <a href="#contact" onClick={(e)=>{e.preventDefault();onNav("contact");}} className="inline-flex h-10 items-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground shadow-glow hover:opacity-90 transition-opacity focus:outline-none focus:ring-2 focus:ring-primary">
             Hire Me
           </a>
+          <a href={resumeUrl} target="_blank" rel="noreferrer" className="text-sm px-3 py-2 rounded-md border border-input hover:bg-accent/60">Resume</a>
           <ThemeToggle />
         </nav>
         <div className="md:hidden flex items-center gap-2">
@@ -57,6 +58,7 @@ export function Navbar() {
             <button onClick={() => onNav("contact")} className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground focus:outline-none focus:ring-2 focus:ring-primary">
               Hire Me
             </button>
+            <a href={resumeUrl} target="_blank" rel="noreferrer" className="inline-flex h-10 items-center justify-center rounded-md border px-4 text-sm font-medium">Resume</a>
           </div>
         </div>
       )}
