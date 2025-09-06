@@ -95,7 +95,7 @@ export function Contact() {
           <SiNodedotjs className="hover:text-green-500 transition" />
           <SiMongodb className="hover:text-emerald-500 transition" />
           <SiTailwindcss className="hover:text-sky-400 transition" />
-          <SiGithub className="hover:text-white transition col-span-2" />
+          <SiGithub className="col-span-2 transition hover:text-gray-900 dark:hover:text-white" />
         </motion.div>
       </div>
     </section>
