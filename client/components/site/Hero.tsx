@@ -10,21 +10,29 @@ export function Hero() {
   useEffect(() => setMounted(true), []);
 
   return (
-    <section id="home" className="relative section pt-32" aria-label="Hero">
+    <section
+      id="home"
+      className="relative section pt-16 sm:pt-20 md:pt-24 lg:pt-32 px-4 sm:px-6 lg:px-12 xl:px-24"
+      aria-label="Hero"
+    >
+      {/* Background gradients */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
       >
         <motion.div
           style={{ y }}
-          className="absolute -top-24 -left-16 h-72 w-72 rounded-full bg-gradient-to-tr from-primary/30 to-fuchsia-500/20 blur-3xl"
+          className="absolute -top-24 -left-16 h-48 w-48 sm:h-64 sm:w-64 lg:h-80 lg:w-80 rounded-full bg-gradient-to-tr from-primary/30 to-fuchsia-500/20 blur-3xl"
         />
         <motion.div
           style={{ y }}
-          className="absolute -bottom-24 -right-16 h-72 w-72 rounded-full bg-gradient-to-tr from-fuchsia-500/25 to-primary/20 blur-3xl"
+          className="absolute -bottom-24 -right-16 h-48 w-48 sm:h-64 sm:w-64 lg:h-80 lg:w-80 rounded-full bg-gradient-to-tr from-fuchsia-500/25 to-primary/20 blur-3xl"
         />
       </div>
-      <div className="grid lg:grid-cols-2 gap-10 items-center">
+
+      {/* Content grid */}
+      <div className="grid gap-12 lg:gap-16 items-center lg:grid-cols-2">
+        {/* Left column */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -32,29 +40,31 @@ export function Hero() {
           transition={{ duration: 0.6 }}
           style={{ opacity }}
         >
-          <p className="text-sm uppercase tracking-widest text-muted-foreground">
+          <p className="mt-2 text-xs sm:text-sm uppercase tracking-widest text-muted-foreground">
             Hello, I'm
           </p>
-          <h1 className="mt-2 font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight">
+          <h1 className="mt-2 font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
             Syed Muhammad Ibrahim
           </h1>
-          <p className="mt-3 text-lg sm:text-xl text-primary font-semibold">
+          <p className="mt-3 text-sm sm:text-base md:text-lg text-primary font-semibold">
             MERN Stack Developer
           </p>
-          <p className="mt-4 text-muted-foreground max-w-2xl">
+          <p className="mt-4 text-sm sm:text-base text-muted-foreground max-w-lg sm:max-w-xl">
             I build fast, scalable, and delightful web applications with clean
             code and a focus on user experience.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
+
+          {/* Buttons */}
+          <div className="mt-6 sm:mt-8 flex flex-wrap gap-3">
             <a
               href="#projects"
-              className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-glow hover:opacity-90 transition transform active:scale-95 focus:outline-none focus:ring-2 focus:ring-primary"
+              className="flex-1 sm:flex-none text-center inline-flex items-center justify-center gap-2 rounded-md bg-primary px-4 py-2 sm:px-5 sm:py-3 text-sm font-semibold text-primary-foreground shadow-glow hover:opacity-90 transition active:scale-95 focus:outline-none focus:ring-2 focus:ring-primary"
             >
               View My Work <ArrowRight className="size-4" />
             </a>
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 rounded-md border px-5 py-3 text-sm font-semibold hover:bg-accent/60 transition transform active:scale-95 focus:outline-none focus:ring-2 focus:ring-primary"
+              className="flex-1 sm:flex-none text-center inline-flex items-center justify-center gap-2 rounded-md border px-4 py-2 sm:px-5 sm:py-3 text-sm font-semibold hover:bg-accent/60 transition active:scale-95 focus:outline-none focus:ring-2 focus:ring-primary"
             >
               Hire Me
             </a>
@@ -62,35 +72,57 @@ export function Hero() {
               href="https://cdn.builder.io/o/assets%2F13e4ac3fb51f402398bc916f1280a140%2F0f296d2b72064c288679c29887927aa7?alt=media&token=eaf36571-61f2-4cad-975a-58e1db1a4d3c&apiKey=13e4ac3fb51f402398bc916f1280a140"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium border hover:bg-accent/60"
+              className="flex-1 sm:flex-none text-center inline-flex items-center justify-center gap-2 rounded-md border px-4 py-2 sm:px-5 sm:py-3 text-sm font-medium hover:bg-accent/60"
             >
               Download Resume
             </a>
           </div>
         </motion.div>
+
+        {/* Right column - Code Editor Preview */}
         <motion.div
           initial={{ opacity: 0, y: 24, scale: 0.98 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.1 }}
+          className="order-last"
         >
-          <div className="relative mx-auto aspect-square max-w-sm rounded-2xl border bg-gradient-to-br from-background to-secondary p-2">
-            <div className="absolute inset-0 rounded-2xl [mask-image:radial-gradient(40%_40%_at_50%_50%,black,transparent)] bg-[radial-gradient(closest-side,theme(colors.primary.DEFAULT)/.15,transparent_80%)]" />
-            <div className="relative h-full w-full rounded-xl bg-[linear-gradient(110deg,rgba(255,255,255,.08),rgba(255,255,255,0)_40%),linear-gradient(110deg,rgba(255,255,255,0),rgba(255,255,255,.06)_60%)] bg-[length:200%_100%] animate-shimmer flex items-center justify-center">
-              <span className="text-center px-6 text-sm text-muted-foreground">
-                Crafting modern web experiences with React, Node.js, and
-                MongoDB.
-              </span>
+          <div className="relative mx-auto w-full max-w-sm sm:max-w-md rounded-2xl border bg-background shadow-xl overflow-hidden">
+            {/* Top bar like an editor */}
+            <div className="flex items-center gap-1 px-3 py-2 bg-muted">
+              <span className="size-2 rounded-full bg-red-500" />
+              <span className="size-2 rounded-full bg-yellow-500" />
+              <span className="size-2 rounded-full bg-green-500" />
+            </div>
+
+            {/* Fake code content */}
+            <div className="p-5 font-mono text-xs sm:text-sm leading-relaxed overflow-x-auto">
+              <p>
+                <span className="text-primary">const</span>{" "}
+                <span className="text-fuchsia-500">app</span> ={" "}
+                <span className="text-blue-400">express()</span>;
+              </p>
+              <p>
+                app.get(<span className="text-green-400">'/'</span>, (req, res){" "}
+                =&gt; &#123;
+              </p>
+              <p className="pl-6">
+                res.send(<span className="text-green-400">'Hello World'</span>);
+              </p>
+              <p>&#125;);</p>
+              <p className="text-blue-400">app.listen(3000);</p>
             </div>
           </div>
         </motion.div>
       </div>
+
+      {/* Decorative vertical line (desktop only) */}
       {mounted && (
         <div
           aria-hidden
           className="pointer-events-none absolute right-4 top-4 hidden md:block"
         >
-          <div className="w-1 h-32 rounded-full bg-gradient-to-b from-primary to-transparent opacity-60" />
+          <div className="w-1 h-24 sm:h-32 rounded-full bg-gradient-to-b from-primary to-transparent opacity-60" />
         </div>
       )}
     </section>
