@@ -23,7 +23,7 @@ export function About() {
         {/* Right column: main content */}
         <div className="lg:col-span-2 space-y-6 text-base sm:text-lg leading-relaxed text-muted-foreground">
           <p>
-            I’m a <span className="font-semibold text-foreground">MERN Stack Developer</span>
+            I’m a <span className="font-semibold text-foreground">MERN Stack Developer </span>
             and BS Software Engineering graduate with a strong foundation in
             object-oriented programming, data structures, and backend
             development. Proficient in JavaScript, Node.js, Express.js, React,
