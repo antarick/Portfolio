@@ -19,8 +19,8 @@ export function Contact() {
         <h2 className="font-display text-3xl sm:text-4xl font-bold">Contact</h2>
         <p className="mt-2 text-muted-foreground">Let's build something great together</p>
       </div>
-      <div className="grid lg:grid-cols-2 gap-8">
-        <motion.form initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} onSubmit={submit} className="rounded-xl border bg-card p-6 space-y-4">
+      <div>
+        <motion.form initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} onSubmit={submit} className="rounded-xl border bg-card p-6 space-y-4 max-w-2xl">
           <div>
             <label className="block text-sm font-medium">Name</label>
             <input value={name} onChange={(e)=>setName(e.target.value)} required className="mt-1 w-full rounded-md border bg-background px-3 py-2 outline-none focus:ring-2 focus:ring-primary" placeholder="Your name" />
@@ -31,37 +31,13 @@ export function Contact() {
           </div>
           <div>
             <label className="block text-sm font-medium">Message</label>
-            <textarea value={message} onChange={(e)=>setMessage(e.target.value)} required rows={5} className="mt-1 w-full rounded-md border bg-background px-3 py-2 outline-none focus:ring-2 focus:ring-primary" placeholder="Tell me about your project" />
+            <textarea value={message} onChange={(e)=>setMessage(e.target.value)} required rows={6} className="mt-1 w-full rounded-md border bg-background px-3 py-2 outline-none focus:ring-2 focus:ring-primary" placeholder="Tell me about your project" />
           </div>
-          <button type="submit" className="inline-flex items-center rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:opacity-90">Send Message</button>
+          <div className="flex items-center gap-3">
+            <button type="submit" className="inline-flex items-center rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:opacity-90">Send Message</button>
+            <a href="mailto:syedmu729@gmail.com" className="text-sm text-muted-foreground hover:underline">Or email me directly at syedmu729@gmail.com</a>
+          </div>
         </motion.form>
-        <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="rounded-xl border bg-card p-6 relative overflow-hidden">
-          <img src="https://cdn.builder.io/api/v1/image/assets%2F13e4ac3fb51f402398bc916f1280a140%2F84171c8fdc5c4f45882d7de85397be0b?format=webp&width=800" alt="decor" className="pointer-events-none absolute right-0 bottom-0 w-48 opacity-10 blur-md mix-blend-overlay" />
-
-          <ul className="space-y-4">
-            <li className="flex items-center gap-3 text-sm text-muted-foreground">
-              <Mail className="size-4" />
-              <a href="mailto:syedmu729@gmail.com" className="hover:underline">syedmu729@gmail.com</a>
-            </li>
-            <li className="flex items-center gap-3 text-sm text-muted-foreground">
-              <Phone className="size-4" />
-              <a href="tel:+923244905451" className="hover:underline">+92 324 4905451</a>
-            </li>
-            <li className="flex items-center gap-3 text-sm text-muted-foreground">
-              <Linkedin className="size-4" />
-              <a target="_blank" href="https://www.linkedin.com/in/" className="hover:underline">LinkedIn</a>
-            </li>
-            <li className="flex items-center gap-3 text-sm text-muted-foreground">
-              <Github className="size-4" />
-              <a target="_blank" href="https://github.com/" className="hover:underline">GitHub</a>
-            </li>
-          </ul>
-
-          <div className="mt-6 flex flex-wrap gap-3">
-            <a href="https://cdn.builder.io/o/assets%2F13e4ac3fb51f402398bc916f1280a140%2F0f296d2b72064c288679c29887927aa7?alt=media&token=eaf36571-61f2-4cad-975a-58e1db1a4d3c&apiKey=13e4ac3fb51f402398bc916f1280a140" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-md bg-gradient-to-r from-primary to-fuchsia-500 px-4 py-2 text-sm font-semibold text-primary-foreground shadow">Download Resume</a>
-            <a href="https://www.linkedin.com/in/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-md border px-4 py-2 text-sm bg-transparent">View LinkedIn</a>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
