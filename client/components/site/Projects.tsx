@@ -12,44 +12,69 @@ type Project = {
   links: { live?: string; repo?: string };
   stack: string[];
   slug: string;
+  features?: string[];
 };
 
 const projects: Project[] = [
   {
     title: "BuildSphere",
-    description: "A building management platform enabling residents, admins, and maintenance teams to collaborate with real-time updates and analytics.",
+    description: "A subscription-based platform for managing building operations including finance, HR, analytics, rentals and maintenance.",
     image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1200&auto=format&fit=crop",
     images: ["https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1200&auto=format&fit=crop"],
     links: { live: "#", repo: "#" },
     stack: ["React", "Node.js", "Express", "MongoDB", "Socket.io"],
     slug: "buildsphere",
+    features: [
+      "Resident app for bookings and service requests",
+      "Real-time alerts for rentals and subscriptions",
+      "Analytics and automation for operational efficiency",
+      "Role-based access for admins and maintenance teams",
+    ],
   },
   {
     title: "Mood Cookbook",
-    description: "AI-powered recipe recommender that suggests meals based on your mood, preferences, and pantry items.",
+    description: "An AI-powered recipe recommender that suggests meals based on user mood, preferences and pantry items.",
     image: "https://images.unsplash.com/photo-1484980972926-edee96e0960d?q=80&w=1200&auto=format&fit=crop",
     images: ["https://images.unsplash.com/photo-1484980972926-edee96e0960d?q=80&w=1200&auto=format&fit=crop"],
     links: { live: "#", repo: "#" },
-    stack: ["React", "OpenAI", "Firebase"],
+    stack: ["React", "Node.js", "OpenAI", "Firebase"],
     slug: "mood-cookbook",
+    features: [
+      "Mood-based recipe generation with AI backend",
+      "Dynamic filtering and personalized recommendations",
+      "Responsive UI built with React and Tailwind",
+      "Deployed on AWS EC2 with GitHub Actions CI/CD",
+    ],
   },
   {
     title: "Echo Desk",
-    description: "A real-time chat platform with typing indicators, read receipts, and secure authentication.",
+    description: "A real-time chat platform featuring messaging, private rooms and role-based access controls.",
     image: "https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=1200&auto=format&fit=crop",
     images: ["https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=1200&auto=format&fit=crop"],
     links: { live: "#", repo: "#" },
-    stack: ["React", "Node.js", "Express", "MongoDB", "Socket.io"],
+    stack: ["React", "Node.js", "Express", "MongoDB", "WebSockets"],
     slug: "echo-desk",
+    features: [
+      "Direct messaging, group chats and private room access",
+      "Typing indicators and read receipts",
+      "JWT-based authentication and message persistence",
+      "Optimized for low-latency real-time interactions",
+    ],
   },
   {
     title: "RentX",
-    description: "Rental management system with Stripe integration for seamless payments and property management.",
+    description: "A rental management backend for landlords to list properties, manage bookings and rental payments.",
     image: "https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=1200&auto=format&fit=crop",
     images: ["https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=1200&auto=format&fit=crop"],
     links: { live: "#", repo: "#" },
-    stack: ["React", "Stripe", "Express", "MongoDB"],
+    stack: ["Node.js", "Express", "MySQL", "Stripe"],
     slug: "rentx",
+    features: [
+      "Stripe integration for secure payments",
+      "Auto-generated PDF contracts for tenants",
+      "Tenant verification and rental history logs",
+      "Booking management with notifications",
+    ],
   },
 ];
 
