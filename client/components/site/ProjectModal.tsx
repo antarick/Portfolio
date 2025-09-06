@@ -52,7 +52,7 @@ export function ProjectModal({ project, onClose }: { project: Project | null; on
         initial={{ y: 30, opacity: 0, scale: 0.98 }}
         animate={{ y: 0, opacity: 1, scale: 1 }}
         transition={{ duration: 0.28, ease: "easeOut" }}
-        className="relative w-full max-w-5xl rounded-2xl bg-card border p-0 overflow-hidden max-h-[92vh] shadow-2xl"
+        className="relative w-full max-w-5xl rounded-2xl bg-card border p-0 overflow-auto max-h-[92vh] shadow-2xl"
       >
         {/* Top visual */}
         <div className="relative h-56 md:h-72 lg:h-56 bg-gradient-to-r from-primary/10 to-fuchsia-10">
