@@ -15,7 +15,7 @@ export function Hero() {
           className="
             absolute
             -top-12 -left-8 sm:-top-16 sm:-left-12
-            h-48 w-48 sm:h-64 sm:w-64 lg:h-80 lg:w-80 xl:h-[28rem] xl:w-[28rem]
+            h-64 w-64 lg:h-80 lg:w-80 xl:h-[28rem] xl:w-[28rem]
             rounded-full
             bg-gradient-to-tr from-primary/30 to-fuchsia-500/20 blur-3xl
           "
@@ -27,7 +27,7 @@ export function Hero() {
           className="
             absolute
             -bottom-12 -right-8 sm:-bottom-16 sm:-right-12
-            h-48 w-48 sm:h-64 sm:w-64 lg:h-80 lg:w-80 xl:h-[28rem] xl:w-[28rem]
+            h-64 w-64 lg:h-80 lg:w-80 xl:h-[28rem] xl:w-[28rem]
             rounded-full
             bg-gradient-to-tr from-fuchsia-500/25 to-primary/20 blur-3xl
           "
