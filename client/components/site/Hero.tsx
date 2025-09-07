@@ -7,7 +7,7 @@ export function Hero() {
   const opacity = useTransform(scrollY, [0, 300], [1, 0.8]);
 
   return (
-    <section id="home" className="section relative overflow-hidden md:relative-none md:overflow-visible" aria-label="Hero">
+    <section id="home" className="section relative overflow-hidden lg:relative-none lg:overflow-visible" aria-label="Hero">
       <div className="grid gap-10 lg:gap-16 xl:gap-20 items-center lg:grid-cols-2">
         {/* Top-left blob */}
         <motion.div

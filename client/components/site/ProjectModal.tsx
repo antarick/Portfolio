@@ -60,7 +60,7 @@ export function ProjectModal({
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header with image */}
-        <div className="relative h-40 sm:h-48 md:h-60 bg-gradient-to-r from-primary/15 via-purple-500/10 to-fuchsia-500/10">
+        <div className="relative h-40 sm:h-48 md:h-55 bg-gradient-to-r from-primary/15 via-purple-500/10 to-fuchsia-500/10">
           {images.length > 0 && (
             <img
               src={images[activeImage]}

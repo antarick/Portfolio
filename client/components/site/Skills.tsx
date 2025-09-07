@@ -25,14 +25,7 @@ const groups = [
   {
     title: "Tools",
     icon: Wrench,
-    items: [
-      "AWS EC2",
-      "Git/GitHub/GitLab",
-      "Trello",
-      "Jira",
-      "Postman",
-      "Figma",
-    ],
+    items: ["AWS EC2", "Git/GitHub/GitLab", "Trello", "Jira", "Postman", "Figma"],
   },
 ];
 
@@ -63,7 +56,7 @@ export function Skills() {
               {g.items.map((item) => (
                 <span
                   key={item}
-                  className="inline-flex items-center rounded-md border px-3 py-1 text-xs font-medium text-muted-foreground hover:text-foreground hover:bg-accent/60 transition-colors"
+                  className="inline-flex items-center rounded-md border px-3 py-1 text-xs font-medium text-muted-foreground hover:text-foreground hover:bg-accent/60"
                 >
                   {item}
                 </span>
