@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { SiReact, SiNodedotjs, SiMongodb, SiTailwindcss, SiGithub } from "react-icons/si";
+import { SiReact, SiNodedotjs, SiMongodb, SiTailwindcss, SiGithub, SiJavascript } from "react-icons/si";
 
 export function Contact() {
   const [name, setName] = useState("");
@@ -9,14 +9,19 @@ export function Contact() {
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
-    const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
+
+    const body = encodeURIComponent(
+      `${message}\n\nRegards,\n${name}\n${email}`
+    );
+
     window.open(
       `mailto:syedmu729@gmail.com?subject=${encodeURIComponent(
-        "Portfolio Inquiry",
+        "Portfolio Inquiry"
       )}&body=${body}`,
-      "_blank",
+      "_blank"
     );
   };
+
 
   return (
     <section id="contact" className="section scroll-mt-2">
@@ -91,11 +96,12 @@ export function Contact() {
           transition={{ duration: 0.6 }}
           className="hidden lg:grid grid-cols-2 gap-6 text-6xl text-muted-foreground/70 place-items-center"
         >
-          <SiReact className="hover:text-cyan-400 transition" />
-          <SiNodedotjs className="hover:text-green-500 transition" />
-          <SiMongodb className="hover:text-emerald-500 transition" />
-          <SiTailwindcss className="hover:text-sky-400 transition" />
-          <SiGithub className="col-span-2 transition hover:text-gray-900 dark:hover:text-white" />
+          <SiReact className="mb-4 col-span-2  hover:text-cyan-400 transition" />
+          <SiNodedotjs className="mb-2 hover:text-green-500 transition" />
+          <SiMongodb className="mb-2 hover:text-emerald-500 transition" />
+          <SiTailwindcss className="mt-2 hover:text-sky-400 transition" />
+          <SiJavascript className="mt-2 hover:text-yellow-400 transition-colors" />
+          <SiGithub className="mt-4 col-span-2 transition hover:text-gray-900 dark:hover:text-white" />
         </motion.div>
       </div>
     </section>
